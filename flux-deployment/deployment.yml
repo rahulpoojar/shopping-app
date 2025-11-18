@@ -4,7 +4,7 @@ metadata:
   name: shopping-app-deployment
   labels:
     app: shopping-app
-  namespace: shopping-app
+  namespace: flux-shopping-app
 spec:
   replicas: 1
   selector:
