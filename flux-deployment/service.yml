@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: shopping-app-service
-  namespace: shopping-app
+  namespace: flux-shopping-app
 spec:
   selector:
     app: shopping-app
@@ -10,4 +10,4 @@ spec:
     - protocol: TCP
       port: 5173
       targetPort: 5173
-  type: ClusterIP
+  type: NodePort
