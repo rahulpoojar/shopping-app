@@ -2,7 +2,7 @@
 
 image:
   repository: madhurasr/shoppingdemo
-  tag: "v2"
+  tag: "v3"
   pullPolicy: IfNotPresent
 
 replicaCount: 3
