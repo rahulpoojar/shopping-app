@@ -1,17 +1,14 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: shoppingapp
   labels:
     app: shoppingapp
 spec:
   replicas: {{ .Values.replicaCount }}
-  revisionHistoryLimit: 5
-
   selector:
     matchLabels:
       app: shoppingapp
-
   template:
     metadata:
       labels:
@@ -23,18 +20,3 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 5173
-
-  strategy:
-    canary:
-      canaryService: shoppingapp-canary
-      stableService: shoppingapp-stable
-
-      trafficRouting:
-        nginx:
-          stableIngress: shoppingapp-ingress
-
-      steps:
-        - setWeight: 20
-        - pause: { duration: 10 }
-        - setWeight: 50
-        - pause: { duration: 20 }
