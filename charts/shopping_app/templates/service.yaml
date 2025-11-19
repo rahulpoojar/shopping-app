@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: shoppingapp-stable
+  name: shoppingapp
 spec:
   selector:
     app: shoppingapp
@@ -9,4 +9,5 @@ spec:
     - protocol: TCP
       port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.targetPort }}
+      #nodePort: {{ .Values.service.nodePort | default nil }}
   type: {{ .Values.service.type }}
